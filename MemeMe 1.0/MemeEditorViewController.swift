@@ -45,7 +45,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         configure(textField: topTextField, withDelegate: topText, withStartingText: topStartingText)
         configure(textField: bottomTextField, withDelegate: bottomText, withStartingText: bottomStartingText)
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
 
     }
     
