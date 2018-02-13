@@ -24,32 +24,22 @@ class TableViewController: UIViewController, UITabBarDelegate, UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         memes = appDelegate.memes
         tableView.reloadData()
-        print("\nTable View Memes\n\(self.memes!)\n")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Table View Meme Count: \(self.memes.count)")
         return self.memes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("\nTableView started\n")
         let reuseIdentifier = "tableView"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         let meme = memes[(indexPath as NSIndexPath).row]
-        // Configure the cell...
+
         cell.imageView?.image = meme.memedImage
-        if cell.imageView?.image != nil {
-            print("memed image set to imageView")
-        }
         cell.textLabel?.text = meme.memeName
-        if cell.textLabel?.text != nil {
-            print("memed title set to title")
-        }
-        print("\nTableView ended")
 
         return cell
     }
