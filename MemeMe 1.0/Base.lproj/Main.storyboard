@@ -68,7 +68,7 @@
         <scene sceneID="yIq-lc-0I4">
             <objects>
                 <navigationController title="CollectionViewNav" id="2V0-yL-AdG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Ke7-iB-xbh"/>
+                    <tabBarItem key="tabBarItem" image="collection_30x30" selectedImage="collection_30x30" id="Ke7-iB-xbh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IfM-zl-UW5">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -136,6 +136,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionViewOutlet" destination="rem-KV-kPF" id="VGu-By-cJS"/>
+                        <outlet property="flowLayout" destination="gHT-39-4uk" id="QsU-67-hAZ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q78-kz-qOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,7 +178,7 @@
         <scene sceneID="PMo-dK-muN">
             <objects>
                 <navigationController title="TableCellViewNav" id="h4f-Mh-liE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="h3y-uZ-0pj"/>
+                    <tabBarItem key="tabBarItem" title="" image="table_30x30" selectedImage="table_30x30" id="h3y-uZ-0pj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7s1-mQ-gcd">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -315,4 +316,8 @@
             <point key="canvasLocation" x="1898" y="-671"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection_30x30" width="30" height="30"/>
+        <image name="table_30x30" width="30" height="30"/>
+    </resources>
 </document>
