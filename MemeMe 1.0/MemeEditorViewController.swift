@@ -25,13 +25,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //MARK: Declarations
     let imagePicker = UIImagePickerController()
-    let navController = UINavigationController()
     let topText = topTextDelegate()
     let bottomText = bottomTextDelegate()
     let topStartingText = "TOP"
     let bottomStartingText = "BOTTOM"
     var memes: [Meme]!
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
@@ -47,7 +45,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         configure(textField: topTextField, withDelegate: topText, withStartingText: topStartingText)
         configure(textField: bottomTextField, withDelegate: bottomText, withStartingText: bottomStartingText)
         
-        self.navController.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
 
     }
     
@@ -142,17 +140,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func pickImageFromAlbumButton(_ sender: Any) {
         pickAnImageFrom(sourceType: .photoLibrary)
-//        imagePicker.sourceType = .photoLibrary
-//        present(imagePicker, animated: true, completion: nil)
-//        print("Album selected")
+
     }
     
     //User selects Camera in Meme editor
     @IBAction func pickImageFromCameraButton(_ sender: Any) {
         pickAnImageFrom(sourceType: .camera)
-//        imagePicker.sourceType = .camera
-//        present(imagePicker, animated: true, completion: nil)
-//        print("Camera selected")
+
     }
     
     //Reset Meme editor fields: Top and Bottom textfields, and the Image
@@ -161,7 +155,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomTextField.text = "BOTTOM"
         imageView.image = nil
         actionOutlet.isEnabled = false
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         print("Editing cancelled")
     }
     
@@ -183,13 +177,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func showToolBars(_ bool: Bool) {
         bottomNavBar.isHidden = bool
+        navigtion.isHidden = bool
     }
 
     //Saving meme in data model
     func save() {
         let newMemedImage = generateMemeImage()
         print("Save started")
-        var meme = Meme(bottomText: bottomTextField.text!, topText: topTextField.text!, originalImage: imageView.image!, memedImage: newMemedImage, memeName: "\(topTextField.text!)...\(bottomTextField.text!)")
+        let meme = Meme(bottomText: bottomTextField.text!, topText: topTextField.text!, originalImage: imageView.image!, memedImage: newMemedImage, memeName: "\(topTextField.text!)...\(bottomTextField.text!)")
         
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate

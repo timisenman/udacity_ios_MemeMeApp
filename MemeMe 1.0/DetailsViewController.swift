@@ -10,16 +10,14 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var memes: [Meme]!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var memes: Meme!
     
     @IBOutlet var memeImage: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        memes = appDelegate.memes
-        
-//        self.memeImage.image = memes.memedImage
+        self.memeImage.image = memes.memedImage
+
     }
     
 }

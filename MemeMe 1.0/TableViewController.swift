@@ -8,10 +8,12 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITabBarDelegate, UITableViewDataSource {
+class TableViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,6 +25,7 @@ class TableViewController: UIViewController, UITabBarDelegate, UITableViewDataSo
         memes = appDelegate.memes
         tableView.reloadData()
         print("\nTable View Memes\n\(self.memes!)\n")
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     // MARK: - Table view data source
@@ -50,22 +53,14 @@ class TableViewController: UIViewController, UITabBarDelegate, UITableViewDataSo
 
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Row selected")
-        let detailView = self.storyboard!.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        print("DetailView Storyboard initialized")
-        let meme = self.memes[(indexPath as NSIndexPath).row]
-        print("\nCollection Meme selected: \(meme)\n")
 
-        detailView.memeImage.image = meme.memedImage
-        if detailView.memeImage != nil {
-            print("\nTableView meme detailView image set\n")
-        }
-        self.navigationController!.pushViewController(detailView, animated: true)
-        print("Detail View Pushed from Table View")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailsView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailsView.memes = memes[indexPath.row]
+        self.navigationController?.pushViewController(detailsView, animated: true)
+        
     }
-    
 
     @IBAction func newMemeButtom(_ sender: Any) {
         let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController

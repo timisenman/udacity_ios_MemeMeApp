@@ -14,6 +14,7 @@ class CollectionViewController: UICollectionViewController {
 
     var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var collectionViewOutlet: UICollectionView!
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class CollectionViewController: UICollectionViewController {
         memes = appDelegate.memes
         collectionViewOutlet.reloadData()
         print("\nCollection View Memes:\n\(self.memes!)\n")
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
 
@@ -55,15 +57,19 @@ class CollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailView = self.storyboard!.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        let meme = self.memes[(indexPath as NSIndexPath).row]
-        print("\nCollection Meme selected: \(meme)\n")
-        detailView.memeImage?.image = meme.memedImage
-        if detailView.memeImage != nil {
-            print("\nCollection meme detailView image set\n")
-        }
-        self.navigationController!.pushViewController(detailView, animated: true)
-        print("Detail View Pushed from Collection View")
+//        let detailView = self.storyboard!.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+//        let meme = self.memes[(indexPath as NSIndexPath).row]
+//        print("\nCollection Meme selected: \(meme)\n")
+//        detailView.memeImage?.image = meme.memedImage
+//        if detailView.memeImage != nil {
+//            print("\nCollection meme detailView image set\n")
+//        }
+//        self.navigationController!.pushViewController(detailView, animated: true)
+//        print("Detail View Pushed from Collection View")
+        
+        let detailsView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailsView.memes = memes[indexPath.row]
+        self.navigationController?.pushViewController(detailsView, animated: true)
     }
     
     @IBAction func newMemeButtom(_ sender: Any) {
