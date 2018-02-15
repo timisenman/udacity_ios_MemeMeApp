@@ -9,15 +9,13 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
-    var memes: Meme!
     
+    var memes: Meme!
     @IBOutlet var memeImage: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
+        super.viewWillAppear(animated)
         self.memeImage.image = memes.memedImage
-
     }
     
 }

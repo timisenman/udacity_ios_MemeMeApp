@@ -8,10 +8,8 @@
 
 import UIKit
 
-//private let reuseIdentifier = "Cell"
-
 class CollectionViewController: UICollectionViewController {
-
+    
     var memes: [Meme]!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -36,27 +34,22 @@ class CollectionViewController: UICollectionViewController {
         collectionViewOutlet.reloadData()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
-
+    
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let reuseIdentifier = "collectionView"
+        let reuseIdentifier = "collectionViewReuseIdentifier"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
-        print(meme)
-        
         cell.memeImage?.image = meme.memedImage
-        cell.memeName?.text = meme.memeName
-        
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let detailsView = self.storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         detailsView.memes = memes[indexPath.row]
         self.navigationController?.pushViewController(detailsView, animated: true)
@@ -64,8 +57,8 @@ class CollectionViewController: UICollectionViewController {
     
     @IBAction func newMemeButtom(_ sender: Any) {
         let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.navigationController!.pushViewController(memeEditor, animated: true)
+        present(memeEditor, animated: true, completion: nil)
     }
-
-
+    
+    
 }
