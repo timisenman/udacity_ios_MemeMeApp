@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  
-//
-//  Created by Timothy Isenman on 12/27/17.
-//  Copyright © 2017 Timothy Isenman. All rights reserved.
-//
-
 import UIKit
 
 
@@ -161,8 +153,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Save and take action on the new meme
     @IBAction func actionButton(_ sender: Any) {
-        print("\"Share\" pressed")
-        
         //MARK: Save image to Camera Roll
         let newMemedImage = generateMemeImage()
         

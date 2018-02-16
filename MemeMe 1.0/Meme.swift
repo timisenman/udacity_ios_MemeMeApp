@@ -1,11 +1,3 @@
-//
-//  Meme.swift
-//  memeMe
-//
-//  Created by Timothy Isenman on 1/30/18.
-//  Copyright © 2018 Timothy Isenman. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

@@ -1,11 +1,3 @@
-//
-//  TableViewController.swift
-//  memeMe
-//
-//  Created by Timothy Isenman on 2/6/18.
-//  Copyright © 2018 Timothy Isenman. All rights reserved.
-//
-
 import UIKit
 
 class TableViewController: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -48,7 +40,6 @@ class TableViewController: UIViewController, UITabBarDelegate, UITableViewDelega
     
     @IBAction func newMemeButtom(_ sender: Any) {
         let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        //        self.navigationController!.pushViewController(memeEditor, animated: true)
         present(memeEditor, animated: true, completion: nil)
     }
 }
